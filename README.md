@@ -1,11 +1,14 @@
 #Menu For 8について
 
 ##はじめに
-ご利用ありがとうございます。  
-このファイルはMenu For 8のソースコードです。  
+Menu For 8のソースコードです。  
+これはWindows 8向けのスタートメニュークローン・ランチャーです。
+Windows 8.1でスタートメニューが復活したため、**このソフトは現在適切に動作しません。**私も使ってません。
+
 WindowsAPICodePack関係のファイルを除いてあります。  
 実際にコンパイルするには、以下のサイトからWindows(R) API Code Pack for Microsoft(R) .NET Framework ver 1.1をダウンロード、展開し、参照を追加しなおしてください。  
 http://archive.msdn.microsoft.com/WindowsAPICodePack
+setup.zipには含むため、一部別のライセンスが適用されます。
 
 またlogo内には、ロゴのicoファイルとPaint.net用の画像ファイルがあります。  
 ico4.pdnはレイヤー等の情報が含まれています。  
