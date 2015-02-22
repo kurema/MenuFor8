@@ -3,7 +3,7 @@
 ##はじめに
 ご利用ありがとうございます。  
 このファイルはMenu For 8のソースコードです。  
-ライセンスの制限を回避するためにWindowsAPICodePack関係のファイルを除いてあります。  
+WindowsAPICodePack関係のファイルを除いてあります。  
 実際にコンパイルするには、以下のサイトからWindows(R) API Code Pack for Microsoft(R) .NET Framework ver 1.1をダウンロード、展開し、参照を追加しなおしてください。  
 http://archive.msdn.microsoft.com/WindowsAPICodePack
 
