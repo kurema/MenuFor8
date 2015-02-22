@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="recentProgram"
+    targetNamespace="http://toro.2ch.net/test/read.cgi/win/1330826421/sm4win8.recentProgram.xsd"
+elementFormDefault="qualified"
+xmlns="http://toro.2ch.net/test/read.cgi/win/1330826421/sm4win8.recentProgram.xsd"
+xmlns:mstns="http://tempuri.org/recentProgram.xsd"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="recent">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="program">
+          <xs:complexType>
+            <xs:sequence></xs:sequence>
+            <xs:attribute name="href" type="xs:string"/>
+            <xs:attribute name="point" type="xs:nonNegativeInteger"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

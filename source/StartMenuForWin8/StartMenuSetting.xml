@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<startmenuSetting xmlns="http://toro.2ch.net/test/read.cgi/win/1330826421/sm4win8.xsd">
+  <setting>
+    <taskbarHeight>40</taskbarHeight>
+    <windowDesign>normal</windowDesign>
+  </setting>
+  <power visible="true">
+    <powerButton>      
+      <menuItem head="スリープ">
+      <execute commandType="builtIn" command="power_sleep"/>
+      </menuItem>
+      <menuItem head="🔓" visible="false">
+        <execute commandType="command" command="rundll32.exe" parameter="user32.dll,LockWorkStation" windowState="close"/>
+      </menuItem>
+    </powerButton>
+    <powerMenu>
+    <menu head="電源メニュー">
+      <menuItem head="ログオフ(_L)"><execute commandType="command" command="shutdown" parameter="/l" windowState="close"/></menuItem>
+      <menuItem head="ロック(_O)"><execute commandType="command" command="rundll32.exe" parameter="user32.dll,LockWorkStation" windowState="close"/></menuItem>
+      <separater/>
+      <menuItem head="再起動(_R)"><execute commandType="command" command="shutdown" parameter="/r /t 0" windowState="close"/></menuItem>
+      <separater/>
+      <menuItem head="スリープ(_S)"><execute commandType="builtIn" command="power_sleep"/></menuItem>
+      <menuItem head="休止状態(_H)"><execute commandType="command" command="shutdown" parameter="/h" windowState="close"/></menuItem>
+      <menuItem head="シャットダウン(_U)"><execute commandType="command" command="shutdown" parameter="/hybrid" windowState="close"/></menuItem>
+      <separater visible="true"/>
+      <menuItem head="完全にシャットダウン(_P)" visible="true"><execute commandType="command" command="shutdown" parameter="/s /t 0" windowState="close"/></menuItem>
+    </menu>
+    </powerMenu>
+  </power>
+  <items>
+    <menu head="よく使うアイテム">
+      <menuFile head="%UserName%">
+        <knownFolder>
+          <canonicalName>UsersFilesFolder</canonicalName>
+        </knownFolder>
+      </menuFile>
+      <menuFile head="ドキュメント" >
+        <knownFolder>
+          <canonicalName>Personal</canonicalName>
+        </knownFolder>
+      </menuFile>
+      <menuFile head="ドキュメント" visible="false">
+        <knownFolder>
+          <canonicalName>DocumentsLibrary</canonicalName>
+        </knownFolder>
+      </menuFile>
+      <menuFile head="ミュージック">
+        <knownFolder>
+          <canonicalName>MusicLibrary</canonicalName>
+        </knownFolder>
+      </menuFile>
+      <menuFile head="ミュージック" visible="false">
+        <knownFolder>
+          <canonicalName>My Music</canonicalName>
+        </knownFolder>
+      </menuFile>
+      <menuFile head="ピクチャ">
+        <knownFolder>
+          <canonicalName>PicturesLibrary</canonicalName>
+        </knownFolder>
+      </menuFile>
+      <menuFile head="ピクチャ" visible="false">
+        <knownFolder>
+          <canonicalName>My Pictures</canonicalName>
+        </knownFolder>
+      </menuFile>
+      <menuFile head="ビデオ">
+        <knownFolder>
+          <canonicalName>VideosLibrary</canonicalName>
+        </knownFolder>
+      </menuFile>
+      <menuFile head="ビデオ" visible="false">
+        <knownFolder>
+          <canonicalName>My Videos</canonicalName>
+        </knownFolder>
+      </menuFile>
+      <separater/>
+      <menuFile head="ゲーム">
+        <knownFolder>
+          <canonicalName>Games</canonicalName>
+        </knownFolder>
+      </menuFile>
+      <menuFile head="コンピュータ">
+        <knownFolder>
+          <canonicalName>MyComputerFolder</canonicalName>
+        </knownFolder>
+      </menuFile>
+      <menuFile head="ネットワーク">
+        <knownFolder>
+          <canonicalName>NetworkPlacesFolder</canonicalName>
+        </knownFolder>
+      </menuFile>
+      <separater/>
+      <menuFile head="コントロールパネル">
+        <knownFolder>
+          <canonicalName>ControlPanelFolder</canonicalName>
+        </knownFolder>
+      </menuFile>
+      <menuItem head="ファイル名を指定して実行">
+        <execute commandType="builtIn" command="dialog_run"/>
+      </menuItem>
+    </menu>
+  </items>
+  <programs>
+    <menu head="よく使うプログラム">
+      <recent count="10" type="program"/>
+    </menu>
+  </programs>
+  <icon visible="true"/>
+</startmenuSetting>

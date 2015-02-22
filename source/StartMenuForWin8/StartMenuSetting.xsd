@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="StartMenuSetting"
+    targetNamespace="http://toro.2ch.net/test/read.cgi/win/1330826421/sm4win8.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://toro.2ch.net/test/read.cgi/win/1330826421/sm4win8.xsd"
+    xmlns:mstns="http://tempuri.org/StartMenuSetting.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xml:lang="ja"
+>
+  <xs:element name="startmenuSetting">
+    <xs:annotation>
+      <xs:documentation>
+        StartMenuForWin8の設定ファイルです。
+        **重要:ルート要素です。この要素を設定ファイルのルートに設定してください。**
+        XML Schemaの制限によりこの要素がルート要素である旨が示せません。その為XMLエディター等でエラーがなくとも、正常に動作しない可能性があります。
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="setting">
+          <xs:annotation>
+            <xs:documentation>
+              スタートメニュー全体の設定を行います。
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="taskbarHeight" type="xs:positiveInteger">
+                <xs:annotation>
+                  <xs:documentation>
+                    タスクバーの高さを設定します。
+                    スタートメニューは画面左下からここで設定したピクセルだけ上に表示されます。
+                    Windows 8の場合標準的には40です。
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="windowDesign" type="windowDesign">
+                <xs:annotation>
+                  <xs:documentation>
+                    ウィンドウのデザインを設定しています。
+                    選択可能な要素はwindowDesignタイプを参照してください。
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="power">
+          <xs:annotation>
+            <xs:documentation>ウィンドウ右下の電源ボタンの機能を設定します。</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="powerButton">
+                <xs:annotation>
+                  <xs:documentation>
+                    メニュー式でない電源ボタンを設定します。
+                    コマンド実行のほかファイルを開くことができます。
+                    要素を複数配置した場合左から順番に設定されます。
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:choice minOccurs="1" maxOccurs="unbounded">
+                    <xs:element ref="menuItem"/>
+                    <xs:element ref="menuFile"/>
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="powerMenu">
+                <xs:annotation>
+                  <xs:documentation>
+                    メニュー式の電源ボタンを設定します。
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:choice>
+                    <xs:element ref="menu"/>
+                    <xs:element ref="menuFile"/>
+                    <xs:element ref="menuItem"/>
+                    <xs:element ref="recent"/>
+                  </xs:choice>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attributeGroup ref="visibleGroup"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name ="items">
+          <xs:annotation>
+            <xs:documentation>よく使うアイテム(右中央部分)を設定します。</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="menu"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name ="programs">
+          <xs:annotation>
+            <xs:documentation>よく使うプログラム(左上部分)を設定します。</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="menu"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="icon">
+          <xs:annotation>
+            <xs:documentation>
+              右上のアイコンを設定します。
+              現在表示のオンオフ設定のみです。
+          </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence></xs:sequence>
+            <xs:attributeGroup ref="visibleGroup"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <!-- element.menu-->  
+  <xs:element name="menu">
+    <xs:annotation>
+      <xs:documentation>
+        この要素は階層式メニューを表現します。
+        子要素としてmenuGroupの要素を持つことができます。
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:group ref="menuGroup" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:attributeGroup ref="item"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="menuItem">
+    <xs:annotation>
+      <xs:documentation>
+        この要素は命令を実行可能なメニューアイテムを表現します。
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="execute"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="item"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="menuFile">
+    <xs:annotation>
+      <xs:documentation>
+        この要素はフォルダを開く事のできるメニューアイテムを表現します。
+        リンクとしてフォルダを開くことも、子としてファイル一覧を表示することもできます。
+        ファイルを対象に指定することもできますが、推奨しません。
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="1" maxOccurs="unbounded">
+        <xs:element name="knownFolder">
+          <xs:annotation>
+            <xs:documentation>
+              フォルダを指定する方法としてWindowsの既知のフォルダ(KnownFolder)の仕組みを利用します。
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:choice>
+              <xs:annotation>
+                <xs:documentation>指定方法を選択します。</xs:documentation>
+              </xs:annotation>
+              <xs:element name="canonicalName" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>正式名(My Music,VideosLibrary等)</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="folderId" type="guidType">
+                <xs:annotation>
+                  <xs:documentation>
+                    既知のフォルダに割り当てられたguid。
+                    例:デスクトップでB4BFCC3A-DB2C-424C-B029-7FE99A87C641
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="path" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>パス。通常利用する必要はありません。</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="parsingName" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+                    物理パス。実在しないパスを指定できます。
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="directory" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>通常のパスで指定されるディレクトリ</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="shellLibrary" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Windows 7以降で利用可能なライブラリ</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="shellSearchCollection" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Windows 7以降で利用可能なサーチコレクション</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+      <xs:attributeGroup ref="item"/>
+      <xs:attribute name="actAsShortcut" type="xs:boolean" default="false" use="optional" />
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="recent">
+    <xs:annotation>
+      <xs:documentation>
+        最近使った項目・最近使ったプログラムを示します。
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence></xs:sequence>
+      <xs:attribute name="type" type="recentType">
+        <xs:annotation>
+          <xs:documentation>項目かプログラムかを選択します。</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="count" type="xs:positiveInteger" use="optional" default="1">
+        <xs:annotation>
+          <xs:documentation>
+            いくつ表示するかを設定します。右側でしか機能しません。
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="actAsMenu" type="xs:boolean" default="false" use="optional">
+        <xs:annotation>
+          <xs:documentation>
+            メニューとして表示するか、リンクとして表示するかを設定します。
+            文脈によっては正しく設定しないと動作しない可能性があります。
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="visible" type="xs:boolean" default="true"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="separater">
+    <xs:annotation>
+      <xs:documentation>
+        セパレータです。場所により適切なスタイルで表示されます。
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence></xs:sequence>
+      <xs:attributeGroup ref="visibleGroup"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="execute" >
+    <xs:annotation>
+      <xs:documentation>命令内容を規定します。</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+      </xs:sequence>
+      <xs:attribute name="commandType" type="commandType" use="required">
+        <xs:annotation>
+          <xs:documentation>コマンドの種類を設定します。種類についてはcommandTypeタイプを参照。</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="command" type="xs:string" use="optional">
+        <xs:annotation>
+          <xs:documentation>
+            コマンドを指定します。(shutdown.exe等)
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="parameter" type="xs:string" use="optional">
+        <xs:annotation>
+          <xs:documentation>
+            パラメータを指定します(/s /t 0等)。場合によっては無視されます。
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="windowState" type="windowState" use="optional" default="normal">
+        <xs:annotation>
+          <xs:documentation>ウィンドウの表示方法を指定します。種類はwindowStateタイプを参照。</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- group-->
+  <xs:group name="menuGroup">
+    <xs:annotation>
+      <xs:documentation>menuの子にできる要素のグループです。</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="menu"/>
+      <xs:element ref="menuItem"/>
+      <xs:element ref="menuFile"/>
+      <xs:element ref="separater"/>
+      <xs:element ref="recent"/>
+    </xs:choice>
+  </xs:group>
+
+  <xs:attributeGroup name="item">
+    <xs:annotation>
+      <xs:documentation>タイトルと表示の可否を設定します。</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="head" type="xs:string"/>
+    <xs:attribute name="visible" type="xs:boolean" default="true"/>
+  </xs:attributeGroup>
+
+  <!-- attribute -->
+  <xs:attributeGroup name="visibleGroup">
+    <xs:annotation>
+      <xs:documentation><![CDATA[<xs:attribute>]]>をルート要素に置くと問題があるため設定したグループです。</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="visible" type="xs:boolean" default="true"/>
+  </xs:attributeGroup>
+
+
+  <!-- simpleType -->
+  <xs:simpleType name="commandType">
+    <xs:annotation>
+      <xs:documentation>コマンドの種類です。</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="command"/>
+      <xs:enumeration value="open"/>
+      <xs:enumeration value="builtIn">
+        <xs:annotation>
+          <xs:documentation>
+            ビルトインコマンドです。
+            現在スリープ以外には用いられていません。その際はcommand要素をpower_sleepにしてください。
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+    <xs:simpleType name="windowDesign">
+      <xs:annotation>
+        <xs:documentation>ウィンドウデザインの種類です。</xs:documentation>
+      </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="transparent">
+        <xs:annotation>
+          <xs:documentation>半透明ウィンドウです。AeroGlass効果などはかかりません。</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="normal">
+        <xs:annotation>
+          <xs:documentation>不透明ウィンドウです。Windows 7 Starter風です。</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="glass">
+        <xs:annotation>
+          <xs:documentation>
+            AeroGlass効果のあるすりガラスウィンドウです。
+            周囲に枠が出ます。
+            不安定な場合があります。起動しない場合は別の設定にしてください。
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="windowState">
+    <xs:annotation>
+      <xs:documentation>コマンド実行時のウィンドウ状態です。</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="normal"/>
+      <xs:enumeration value="close"/>
+      <xs:enumeration value="minimized"/>
+      <xs:enumeration value="maximized"/>
+      <xs:enumeration value="hidden"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="recentType">
+    <xs:annotation>
+      <xs:documentation>最近使った項目か最近使ったプログラムかを選択します。</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="program"/>
+      <xs:enumeration value="file"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="guidType">
+    <xs:annotation>
+      <xs:documentation>guidを示します。</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\{[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\}"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

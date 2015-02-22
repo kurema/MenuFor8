@@ -1,0 +1,10 @@
+﻿<Application x:Class="StartMenuForWin8.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml"
+             xmlns:properties="clr-namespace:StartMenuForWin8.Properties"
+             >
+    <Application.Resources>
+        <properties:Resources x:Key="Resources" />
+    </Application.Resources>
+</Application>

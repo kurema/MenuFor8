@@ -1,0 +1,47 @@
+﻿<Window x:Class="StartMenuSetting.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{Binding Source={StaticResource Resources}, Path=StringPropertTitle}" Height="Auto" Width="Auto" WindowStyle="SingleBorderWindow" HorizontalAlignment="Center" VerticalAlignment="Center" ResizeMode="NoResize" SizeToContent="WidthAndHeight" Background="{x:Static SystemColors.ControlLightBrush}" Topmost="True">
+    <Grid Width="456" Height="396">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="360*" />
+            <RowDefinition Height="36" />
+        </Grid.RowDefinitions>
+        <TabControl Name="tabControl1" Margin="10,10,10,0">
+            <TabItem Header="{Binding Source={StaticResource Resources}, Path=StringStartMenuTab}" Name="tabItem1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="84*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="170" />
+                        <ColumnDefinition Width="142" />
+                        <ColumnDefinition Width="114*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock  Margin="10,10,10,14" Name="label1" Grid.ColumnSpan="2" Text="{Binding Source={StaticResource Resources}, Path=StringCustomizeStartmenu}" TextWrapping="Wrap" FontFamily="Meiryo UI" FontSize="12" />
+                    <Label Content="{Binding Source={StaticResource Resources}, Path=StringPowerButtonAction}" Grid.Row="1" Name="label2" Margin="10,0" Height="39" VerticalAlignment="Top" />
+                    <ComboBox Grid.Row="1" Height="24" Margin="10,3,10,0" Name="comboBox1" VerticalAlignment="Top" Grid.Column="1" />
+                    <Button Grid.Column="2" Height="23" Margin="10,10,6,0" Name="buttonCustom" VerticalAlignment="Top" Click="buttonCustom_Click" Content="{Binding Source={StaticResource Resources}, Path=StringCustomize}" />
+                    <GroupBox Grid.ColumnSpan="3" Grid.Row="2" Header="{Binding Source={StaticResource Resources}, Path=StringPrivacy}" Margin="10,5,6,11" Name="groupBox1">
+
+                        <StackPanel Name="stackPanel2">
+                            <CheckBox Content="{Binding Source={StaticResource Resources}, Path=StringStoreRecentProgram}" Height="16" Name="checkBox1" Margin="4" FontFamily="Meiryo UI" />
+                            <!--<CheckBox Content="最近開いた項目を［スタート］メニューとタスクバーに保存し表示する(M)" FontFamily="Meiryo UI" Height="16" Name="checkBox2" Margin="4" />-->
+                        </StackPanel>
+                    </GroupBox>
+                    <Label Content="Version info" Grid.Row="3" Margin="3" Name="VersionLabel" Grid.ColumnSpan="3" />
+                    <TextBlock Grid.Row="4" Margin="3" Name="CopyRightBlock" Text="Copyright" Grid.ColumnSpan="3" TextWrapping="Wrap" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <StackPanel Name="stackPanel1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="{Binding Source={StaticResource Resources}, Path=StringOK}" Height="23" Name="buttonOK" Width="87" Margin="4" Click="buttonOK_Click"/>
+            <Button Content="{Binding Source={StaticResource Resources}, Path=StringCancel}" Height="23" Name="buttonCancel" Width="87" Margin="4" Click="buttonCancel_Click" />
+            <Button Height="23" Name="buttonApply" Width="87" Content="{Binding Source={StaticResource Resources}, Path=StringApply}" Margin="4" IsEnabled="False" Click="buttonApply_Click" />
+        </StackPanel>
+    </Grid>
+</Window>
