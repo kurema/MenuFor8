@@ -7,7 +7,7 @@ Windows 8.1でスタートメニューが復活したため、**このソフト�
 
 WindowsAPICodePack関係のファイルを除いてあります。  
 実際にコンパイルするには、以下のサイトからWindows(R) API Code Pack for Microsoft(R) .NET Framework ver 1.1をダウンロード、展開し、参照を追加しなおしてください。  
-http://archive.msdn.microsoft.com/WindowsAPICodePack
+http://archive.msdn.microsoft.com/WindowsAPICodePack  
 setup.zipには含むため、一部別のライセンスが適用されます。
 
 またlogo内には、ロゴのicoファイルとPaint.net用の画像ファイルがあります。  
