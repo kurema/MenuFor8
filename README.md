@@ -1,9 +1,9 @@
-#Menu For 8について
+# Menu For 8について
 
-##はじめに
+## はじめに
 Menu For 8のソースコードです。  
 これはWindows 8向けのスタートメニュークローン・ランチャーです。  
-Windows 8.1でスタートメニューが復活したため、**このソフトは現在適切に動作しません。**私も使ってません。
+Windows 8.1でスタートボタンが復活したため、**このソフトは現在適切に動作しません。**私も使ってません。
 
 WindowsAPICodePack関係のファイルを除いてあります。  
 実際にコンパイルするには、以下のサイトからWindows(R) API Code Pack for Microsoft(R) .NET Framework ver 1.1をダウンロード、展開し、参照を追加しなおしてください。  
@@ -14,7 +14,7 @@ setup.zipには含むため、一部別のライセンスが適用されます�
 ico4.pdnはレイヤー等の情報が含まれています。  
 商標等に細心の注意を払い利用してください。  
 
-##注意
+## 注意
 * リソース(Properties/Resources.resx)からコード(Properties/Resources.Designer.cs)を自動作成するResGen.exeに問題があり、コンストラクタ(Properties/Resources.Designer.cs内Resources())をinternalで作成するようです。この時、場合によって正常にコンパイルできなくなります。  
 本来はアクセッサークラスを作成すべきですが、暫定的に``internal Resources() {``
 をこのように``public Resources() {``
@@ -28,11 +28,11 @@ Properties/Resourcesのコンストラクタが見当たらないとの例外が
 * 実行はWindows 8上を想定しています。Windows 7より前のOSでは正常に動作しない可能性もあります。
 * Windows 8.1以降ではスタートボタンが復活したため動作しません。
 
-##連絡
+## 連絡
 以下のメールアドレスにどうぞ。  
 kurema_makoto_software@yahoo.co.jp
 
-##アンインストール
+## アンインストール
 通常通り「プログラムのアンインストール」等の項目から削除できます。
 
 ---------------------------------------------
