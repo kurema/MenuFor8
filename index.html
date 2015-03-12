@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Menufor8 by kurema</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Menufor8</h1>
+        <p>Windows 8を対象としたスタートメニュークローンです。Windows 7のスタートメニューを可能な限り再現する事を目標としています。Windows 8.1以上は対象としていません。</p>
+        <p class="view"><a href="https://github.com/kurema/MenuFor8">View the Project on GitHub <small>kurema/MenuFor8</small></a></p>
+        <ul>
+          <li><a href="https://github.com/kurema/MenuFor8/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/kurema/MenuFor8/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/kurema/MenuFor8">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="menu-for-8について" class="anchor" href="#menu-for-8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6" aria-hidden="true"><span class="octicon octicon-link"></span></a>Menu For 8について</h1>
+
+<h2>
+<a id="はじめに" class="anchor" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB" aria-hidden="true"><span class="octicon octicon-link"></span></a>はじめに</h2>
+
+<p>Menu For 8のソースコードです。<br>
+これはWindows 8向けのスタートメニュークローン・ランチャーです。<br>
+Windows 8.1でスタートボタンが復活したため、<strong>このソフトは現在適切に動作しません。</strong>私も使ってません。</p>
+
+<p>WindowsAPICodePack関係のファイルを除いてあります。<br>
+実際にコンパイルするには、以下のサイトからWindows(R) API Code Pack for Microsoft(R) .NET Framework ver 1.1をダウンロード、展開し、参照を追加しなおしてください。<br>
+<a href="http://archive.msdn.microsoft.com/WindowsAPICodePack">http://archive.msdn.microsoft.com/WindowsAPICodePack</a><br>
+setup.zipには含むため、一部別のライセンスが適用されます。</p>
+
+<p>またlogo内には、ロゴのicoファイルとPaint.net用の画像ファイルがあります。<br>
+ico4.pdnはレイヤー等の情報が含まれています。<br>
+商標等に細心の注意を払い利用してください。  </p>
+
+<h2>
+<a id="注意" class="anchor" href="#%E6%B3%A8%E6%84%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>注意</h2>
+
+<ul>
+<li>リソース(Properties/Resources.resx)からコード(Properties/Resources.Designer.cs)を自動作成するResGen.exeに問題があり、コンストラクタ(Properties/Resources.Designer.cs内Resources())をinternalで作成するようです。この時、場合によって正常にコンパイルできなくなります。<br>
+本来はアクセッサークラスを作成すべきですが、暫定的に<code>internal Resources() {</code>
+をこのように<code>public Resources() {</code>
+書き換えています。<br>
+Properties/Resourcesのコンストラクタが見当たらないとの例外が発生した場合には(Mainwindow.xamlで発生します)同様に書き換えてみてください。<br>
+参考:<a href="http://connect.microsoft.com/VisualStudio/feedback/details/628281/silverlight-wp7-resource-files-and-binding">http://connect.microsoft.com/VisualStudio/feedback/details/628281/silverlight-wp7-resource-files-and-binding</a>
+</li>
+<li>当初から名前を変更したため、名称に関して若干の混乱が発生しています。このソフトの名前はMenu For 8です。これは名称内にMicrosoft製品の名前を含まない・誤解を与えない事を目的とするものです。しかし、名前空間やクラス名などではStartMenuForWin8が使われています。あくまで開発中の名前で現在のソフトウェアの名前ではありません。ご注意ください。</li>
+</ul>
+
+<h2>
+<a id="対象環境" class="anchor" href="#%E5%AF%BE%E8%B1%A1%E7%92%B0%E5%A2%83" aria-hidden="true"><span class="octicon octicon-link"></span></a>対象環境</h2>
+
+<ul>
+<li>Microsoft Visual Studio 2010シリーズまたはVisual C# 2010 Express。</li>
+<li>実行はWindows 8上を想定しています。Windows 7より前のOSでは正常に動作しない可能性もあります。</li>
+<li>Windows 8.1以降ではスタートボタンが復活したため動作しません。</li>
+</ul>
+
+<h2>
+<a id="連絡" class="anchor" href="#%E9%80%A3%E7%B5%A1" aria-hidden="true"><span class="octicon octicon-link"></span></a>連絡</h2>
+
+<p>以下のメールアドレスにどうぞ。<br>
+<a href="mailto:kurema_makoto_software@yahoo.co.jp">kurema_makoto_software@yahoo.co.jp</a></p>
+
+<h2>
+<a id="アンインストール" class="anchor" href="#%E3%82%A2%E3%83%B3%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB" aria-hidden="true"><span class="octicon octicon-link"></span></a>アンインストール</h2>
+
+<p>通常通り「プログラムのアンインストール」等の項目から削除できます。</p>
+
+<hr>
+
+<p>商標等について。
+Microsoft は米国 Microsoft Corporation の米国およびその他の国における登録商標または商標です。<br>
+Windows、Windows Server、Windows Vista、Windows 7 は米国 Microsoft Corporation の米国およびその他の国における登録商標または商標です。<br>
+Visual Studio、Visual Basic、Visual C#、Visual C++ は米国 Microsoft Corporation の米国およびその他の国における登録商標または商標です。<br>
+.NET Framework は米国 Microsoft Corporation の米国およびその他の国における登録商標または商標です。<br>
+Windowsの正式名称は、Microsoft Windows Operating Systemです。<br>
+Windows 8は現時点での開発コードネームです。将来名称が変更される可能性があります。<br>
+その他、本ソフトウェアに記載の製品名は、各社の商標または登録商標です。  </p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/kurema">kurema</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
